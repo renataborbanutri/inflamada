@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Avaliação Completa - Programa Desinflamação 2 Semanas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fff0f4 0%, #fffaf8 100%);
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 700px;
+      background: white;
+      margin: 0 auto;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(176, 53, 116, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #b03574, #d4579a, #b03574);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 30px;
+      max-width: 200px;
+      height: 80px;
+      background: linear-gradient(135deg, #b03574, #d4579a);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .progress-container {
+      margin-bottom: 30px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #f0f0f0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #b03574, #d4579a);
+      border-radius: 4px;
+      transition: width 0.5s ease;
+      width: 0%;
+    }
+
+    .progress-text {
+      text-align: center;
+      color: #b03574;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .section {
+      display: none;
+      animation: fadeInUp 0.6s ease;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      text-align: center;
+      color: #b03574;
+      font-weight: 700;
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #b03574;
+      font-weight: 600;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 1.1em;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      color: #333;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"], input[type="number"], select {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus, input[type="number"]:focus, select:focus {
+      outline: none;
+      border-color: #b03574;
+    }
+
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .checkbox-item {
+      background: #fafafa;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .checkbox-item:hover {
+      background: #fff0f4;
+      border-color: #b03574;
+      transform: translateY(-2px);
+    }
+
+    .checkbox-item.selected {
+      background: linear-gradient(135deg, #b03574, #d4579a);
+      color: white;
+      border-color: #b03574;
+    }
+
+    .checkbox-item input {
+      display: none;
+    }
+
+    .checkbox-item .checkmark {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #ddd;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .checkbox-item.selected .checkmark {
+      background: white;
+      border-color: white;
+    }
+
+    .checkbox-item.selected .checkmark::after {
+      content: '✓';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #b03574;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .symptom-item {
+      background: #fafafa;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .symptom-item:hover {
+      background: #fff0f4;
+      border-color: #b03574;
+    }
+
+    .symptom-item.selected {
+      background: linear-gradient(135deg, #b03574, #d4579a);
+      color: white;
+      border-color: #b03574;
+    }
+
+    .symptom-item input {
+      margin-right: 12px;
+      transform: scale(1.3);
+      accent-color: #b03574;
+    }
+
+    button {
+      background: linear-gradient(135deg, #b03574, #d4579a);
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 50px;
+      width: 100%;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(176, 53, 116, 0.3);
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .result {
+      background: linear-gradient(135deg, #fff0f4, #fffaf8);
+      border: 2px solid #b03574;
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 30px;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .result h3 {
+      color: #b03574;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .result-section {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-left: 4px solid #b03574;
+    }
+
+    .programa-cta {
+      background: linear-gradient(135deg, #b03574, #d4579a);
+      color: white;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      margin-top: 30px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
+    .programa-cta h3 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+    }
+
+    .programa-cta .beneficios {
+      text-align: left;
+      margin: 20px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+    }
+
+    .programa-cta .beneficio {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .programa-cta .beneficio::before {
+      content: '✅';
+      margin-right: 10px;
+      font-size: 1.2em;
+    }
+
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      padding: 16px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 18px;
+      display: inline-block;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      background: #1ebe5d;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+    .nav-btn {
+      background: transparent;
+      color: #b03574;
+      border: 2px solid #b03574;
+      padding: 12px 24px;
+      width: auto;
+      margin: 0;
+    }
+
+    .nav-btn:hover {
+      background: #b03574;
+      color: white;
+    }
+
+    .promo-text {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .promo-text p {
+      font-size: 20px;
+      font-weight: 600;
+      color: #b03574;
+    }
+
+    .whatsapp-share a {
+      background: #25D366;
+      color: white;
+      padding: 16px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 18px;
+      display: inline-block;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-share a:hover {
+      background: #1ebe5d;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 25px;
+        margin: 10px;
+      }
+      
+      .checkbox-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      h1 {
+        font-size: 1.8em;
+      }
+      
+      .programa-cta .beneficios {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="logo">
+      🌸 PROGRAMA DESINFLAMAÇÃO
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <div class="progress-text" id="progress-text">Etapa 1 de 5</div>
+    </div>
+
+    <!-- SEÇÃO 1: DADOS PESSOAIS -->
+    <div class="section active" id="section-1">
+      <h1>Vamos nos conhecer melhor!</h1>
+      <p class="subtitle">Preciso de algumas informações básicas para personalizar sua avaliação</p>
+      
+      <div class="form-group">
+        <label for="idade">Qual sua idade?</label>
+        <input type="number" id="idade" min="18" max="100" placeholder="Ex: 35">
+      </div>
+      
+      <div class="form-group">
+        <label for="peso">Qual seu peso atual? (kg)</label>
+        <input type="number" id="peso" step="0.1" placeholder="Ex: 65.5">
+      </div>
+      
+      <div class="form-group">
+        <label for="altura">Qual sua altura? (cm)</label>
+        <input type="number" id="altura" placeholder="Ex: 165">
+      </div>
+      
+      <div class="form-group">
+        <label for="pais">Em que país você mora?</label>
+        <select id="pais">
+          <option value="">Selecione seu país</option>
+          <option value="Brasil">Brasil</option>
+          <option value="Portugal">Portugal</option>
+          <option value="Estados Unidos">Estados Unidos</option>
+          <option value="Canada">Canadá</option>
+          <option value="Reino Unido">Reino Unido</option>
+          <option value="França">França</option>
+          <option value="Alemanha">Alemanha</option>
+          <option value="Espanha">Espanha</option>
+          <option value="Itália">Itália</option>
+          <option value="Argentina">Argentina</option>
+          <option value="Chile">Chile</option>
+          <option value="México">México</option>
+          <option value="Outro">Outro</option>
+        </select>
+      </div>
+      
+      <button onclick="nextSection(1)">Continuar</button>
+    </div>
+
+    <!-- SEÇÃO 2: OBJETIVOS -->
+    <div class="section" id="section-2">
+      <h2>Quais são seus maiores interesses?</h2>
+      <p class="subtitle">Selecione todos os objetivos que fazem sentido para você</p>
+      
+      <div class="checkbox-grid">
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'objetivo')">
+          <input type="checkbox" value="Reduzir glicose no sangue">
+          <div class="checkmark"></div>
+          <strong>Reduzir glicose no sangue</strong>
+          <small style="display: block; margin-top: 5px;">Controlar diabetes e pré-diabetes</small>
+        </div>
+        
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'objetivo')">
+          <input type="checkbox" value="Reduzir insulina">
+          <div class="checkmark"></div>
+          <strong>Reduzir insulina</strong>
+          <small style="display: block; margin-top: 5px;">Melhorar resistência insulínica</small>
+        </div>
+        
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'objetivo')">
+          <input type="checkbox" value="Longevidade">
+          <div class="checkmark"></div>
+          <strong>Longevidade</strong>
+          <small style="display: block; margin-top: 5px;">Envelhecer com saúde e vitalidade</small>
+        </div>
+        
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'objetivo')">
+          <input type="checkbox" value="Queimar gordura localizada">
+          <div class="checkmark"></div>
+          <strong>Queimar gordura localizada</strong>
+          <small style="display: block; margin-top: 5px;">Reduzir medidas específicas</small>
+        </div>
+        
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'objetivo')">
+          <input type="checkbox" value="Perder peso">
+          <div class="checkmark"></div>
+          <strong>Perder peso</strong>
+          <small style="display: block; margin-top: 5px;">Emagrecer de forma saudável</small>
+        </div>
+        
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'objetivo')">
+          <input type="checkbox" value="Ganhar energia">
+          <div class="checkmark"></div>
+          <strong>Ganhar energia</strong>
+          <small style="display: block; margin-top: 5px;">Acabar com o cansaço constante</small>
+        </div>
+        
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'objetivo')">
+          <input type="checkbox" value="Acelerar o metabolismo">
+          <div class="checkmark"></div>
+          <strong>Acelerar o metabolismo</strong>
+          <small style="display: block; margin-top: 5px;">Queimar mais calorias naturalmente</small>
+        </div>
+        
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'objetivo')">
+          <input type="checkbox" value="Aumentar foco e concentração">
+          <div class="checkmark"></div>
+          <strong>Aumentar foco e concentração</strong>
+          <small style="display: block; margin-top: 5px;">Melhorar performance mental</small>
+        </div>
+        
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'objetivo')">
+          <input type="checkbox" value="Melhorar saúde em geral">
+          <div class="checkmark"></div>
+          <strong>Melhorar saúde em geral</strong>
+          <small style="display: block; margin-top: 5px;">Bem-estar completo</small>
+        </div>
+      </div>
+      
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevSection(2)">Voltar</button>
+        <button onclick="nextSection(2)">Continuar</button>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 3: HÁBITOS DIÁRIOS -->
+    <div class="section" id="section-3">
+      <h2>Vamos falar sobre seus hábitos</h2>
+      <p class="subtitle">Essas informações me ajudam a entender seu estilo de vida atual</p>
+      
+      <div class="checkbox-grid">
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'habito')">
+          <input type="checkbox" value="Bebo pouca água (menos de 1,5L/dia)">
+          <div class="checkmark"></div>
+          <strong>Bebo pouca água</strong>
+          <small style="display: block; margin-top: 5px;">Menos de 1,5L por dia</small>
+        </div>
+        
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'habito')">
+          <input type="checkbox" value="Como muito açúcar/doces">
+          <div class="checkmark"></div>
+          <strong>Como muito açúcar/doces</strong>
+          <small style="display: block; margin-top: 5px;">Difícil resistir às tentações</small>
+        </div>
+        
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'habito')">
+          <input type="checkbox" value="Consumo alimentos ultraprocessados">
+          <div class="checkmark"></div>
+          <strong>Consumo ultraprocessados</strong>
+          <small style="display: block; margin-top: 5px;">Comidas prontas, embutidos, etc.</small>
+        </div>
+        
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'habito')">
+          <input type="checkbox" value="Durmo mal ou poucas horas">
+          <div class="checkmark"></div>
+          <strong>Durmo mal ou poucas horas</strong>
+          <small style="display: block; margin-top: 5px;">Menos de 7h ou sono fragmentado</small>
+        </div>
+        
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'habito')">
+          <input type="checkbox" value="Sou sedentária">
+          <div class="checkmark"></div>
+          <strong>Sou sedentária</strong>
+          <small style="display: block; margin-top: 5px;">Pouco ou nenhum exercício</small>
+        </div>
+        
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'habito')">
+          <input type="checkbox" value="Tenho muito estresse">
+          <div class="checkmark"></div>
+          <strong>Tenho muito estresse</strong>
+          <small style="display: block; margin-top: 5px;">Trabalho, família, pressão constante</small>
+        </div>
+        
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'habito')">
+          <input type="checkbox" value="Pulo refeições com frequência">
+          <div class="checkmark"></div>
+          <strong>Pulo refeições</strong>
+          <small style="display: block; margin-top: 5px;">Café da manhã, almoço ou jantar</small>
+        </div>
+        
+        <div class="checkbox-item" onclick="toggleCheckbox(this, 'habito')">
+          <input type="checkbox" value="Bebo álcool regularmente">
+          <div class="checkmark"></div>
+          <strong>Bebo álcool regularmente</strong>
+          <small style="display: block; margin-top: 5px;">Mais de 2-3x por semana</small>
+        </div>
+      </div>
+      
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevSection(3)">Voltar</button>
+        <button onclick="nextSection(3)">Continuar</button>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 4: SINTOMAS -->
+    <div class="section" id="section-4">
+      <h2>Autoavaliação da Inflamação</h2>
+      <p class="subtitle">Marque os sintomas que você sente com frequência</p>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Intestino" class="sintoma">
+        <span>Barriga inchada ou gases</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Intestino" class="sintoma">
+        <span>Constipação ou intestino solto</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Pele" class="sintoma">
+        <span>Acne, rosácea ou pele irritada</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Hormonal" class="sintoma">
+        <span>TPM intensa ou ciclo irregular</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Articulações" class="sintoma">
+        <span>Dor nas articulações</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Cérebro" class="sintoma">
+        <span>Cansaço excessivo ou névoa mental</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Fígado" class="sintoma">
+        <span>Enjoo com alimentos gordurosos</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Sono" class="sintoma">
+        <span>Dificuldade para dormir ou sono não reparador</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Metabolismo" class="sintoma">
+        <span>Dificuldade em perder peso</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Inflamação hormonal" class="sintoma">
+        <span>Gordura na região abdominal</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Rins" class="sintoma">
+        <span>Acorda muito para fazer xixi</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Microbiota" class="sintoma">
+        <span>Candidíase</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Urinário" class="sintoma">
+        <span>Infecção urinária</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Neurológico" class="sintoma">
+        <span>Dores de cabeça</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Muscular/Imune" class="sintoma">
+        <span>Dor no corpo</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Imunológico" class="sintoma">
+        <span>Alergias</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Hormonal" class="sintoma">
+        <span>Ressecamento vaginal</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Hormonal" class="sintoma">
+        <span>Baixa libido</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Digestivo" class="sintoma">
+        <span>Língua esbranquiçada</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Zinco e Ferro" class="sintoma">
+        <span>Unha quebradiça</span>
+      </div>
+      
+      <div class="symptom-item" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="Tireoide" class="sintoma">
+        <span>Queda de cabelo</span>
+      </div>
+      
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevSection(4)">Voltar</button>
+        <button onclick="gerarResultado()">Ver Meu Resultado</button>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 5: RESULTADO -->
+    <div class="section" id="section-5">
+      <div class="result" id="resultado">
+        <!-- Resultado será gerado aqui -->
+      </div>
+      
+      <div class="programa-cta">
+        <h3>🌸 PROGRAMA DESINFLAMAÇÃO - 2 SEMANAS 🌸</h3>
+        <p style="font-size: 1.2em; margin-bottom: 20px;">
+          <strong>Transforme sua saúde em apenas 14 dias com um método comprovado!</strong>
+        </p>
+        
+        <div class="beneficios">
+          <div class="beneficio">Plano alimentar anti-inflamatório personalizado</div>
+          <div class="beneficio">Receitas práticas e deliciosas</div>
+          <div class="beneficio">Lista de compras organizada</div>
+          <div class="beneficio">Suplementação estratégica</div>
+          <div class="beneficio">Acompanhamento diário via WhatsApp</div>
+          <div class="beneficio">Resultados visíveis em 14 dias</div>
+          <div class="beneficio">Método testado e aprovado</div>
+          <div class="beneficio">Suporte nutricional especializado</div>
+        </div>
+        
+        <p style="font-size: 1.1em; margin: 20px 0;">
+          <strong>Não espere mais! Seu corpo está pedindo ajuda e você pode transformar tudo isso em apenas 2 semanas.</strong>
+        </p>
+        
+        <div id="whatsapp-cta"></div>
+      </div>
+
+      <div class="promo-text" id="promo-section" style="display: none;">
+        <p style="font-size: 20px; font-weight: 600; color: #b03574;">
+          🌸 Um corpo inflamado cansa, dói e trava sua vida. Liberte-se 🌸
+        </p>
+        <div class="whatsapp-share" id="whatsapp-share"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentSection = 1;
+    const totalSections = 5;
+    let userData = {};
+
+    function updateProgress() {
+      const progress = (currentSection / totalSections) * 100;
+      document.getElementById('progress-fill').style.width = progress + '%';
+      document.getElementById('progress-text').textContent = `Etapa ${currentSection} de ${totalSections}`;
+    }
+
+    function nextSection(section) {
+      if (validateSection(section)) {
+        document.getElementById(`section-${section}`).classList.remove('active');
+        currentSection = section + 1;
+        document.getElementById(`section-${currentSection}`).classList.add('active');
+        updateProgress();
+        window.scrollTo(0, 0);
+      }
+    }
+
+    function prevSection(section) {
+      document.getElementById(`section-${section}`).classList.remove('active');
+      currentSection = section - 1;
+      document.getElementById(`section-${currentSection}`).classList.add('active');
+      updateProgress();
+      window.scrollTo(0, 0);
+    }
+
+    function validateSection(section) {
+      switch(section) {
+        case 1:
+          const idade = document.getElementById('idade').value;
+          const peso = document.getElementById('peso').value;
+          const altura = document.getElementById('altura').value;
+          const pais = document.getElementById('pais').value;
+          
+          if (!idade || !peso || !altura || !pais) {
+            alert('Por favor, preencha todos os campos antes de continuar.');
+            return false;
+          }
+          
+          userData.idade = idade;
+          userData.peso = peso;
+          userData.altura = altura;
+          userData.pais = pais;
+          userData.imc = (peso / ((altura/100) ** 2)).toFixed(1);
+          break;
+
+        case 2:
+          if (!userData.objetivo || userData.objetivo.length === 0) {
+            alert('Por favor, selecione pelo menos um objetivo antes de continuar.');
+            return false;
+          }
+          break;
+
+        case 3:
+          if (!userData.habito || userData.habito.length === 0) {
+            alert('Por favor, selecione pelo menos um hábito antes de continuar.');
+            return false;
+          }
+          break;
+
+        case 4:
+          if (!userData.sintomas || userData.sintomas.length === 0) {
+            alert('Por favor, selecione pelo menos um sintoma antes de continuar.');
+            return false;
+          }
+          break;
+      }
+      return true;
+    }
+
+    function toggleCheckbox(element, type) {
+      const input = element.querySelector('input');
+      input.checked = !input.checked;
+      element.classList.toggle('selected', input.checked);
+
+      if (!userData[type]) userData[type] = [];
+      
+      if (input.checked) {
+        if (!userData[type].includes(input.value)) {
+          userData[type].push(input.value);
+        }
+      } else {
+        userData[type] = userData[type].filter(item => item !== input.value);
+      }
+    }
+
+    function toggleSymptom(element) {
+      const input = element.querySelector('input');
+      input.checked = !input.checked;
+      element.classList.toggle('selected', input.checked);
+
+      if (!userData.sintomas) userData.sintomas = [];
+      if (!userData.sintomasTexto) userData.sintomasTexto = [];
+
+      const sintomaTexto = element.querySelector('span').innerText.trim();
+      if (input.checked) {
+        if (!userData.sintomas.includes(input.value)) {
+          userData.sintomas.push(input.value);
+          userData.sintomasTexto.push(sintomaTexto);
+        }
+      } else {
+        userData.sintomas = userData.sintomas.filter(item => item !== input.value);
+        userData.sintomasTexto = userData.sintomasTexto.filter(item => item !== sintomaTexto);
+      }
+    }
+
+    function gerarResultado() {
+      if (validateSection(4)) {
+        document.getElementById(`section-4`).classList.remove('active');
+        currentSection = 5;
+        document.getElementById(`section-5`).classList.add('active');
+        updateProgress();
+
+        // Calcular nível de inflamação
+        const numSintomas = userData.sintomas.length;
+        let nivel = "", mensagem = "";
+        if (numSintomas <= 2) {
+          nivel = "Leve 💛";
+          mensagem = "Seu corpo está mostrando sinais leves. A prevenção é o melhor caminho!";
+        } else if (numSintomas <= 3) {
+          nivel = "Moderada 🟠";
+          mensagem = "A inflamação está se espalhando. É hora de cuidar de você com mais atenção.";
+        } else {
+          nivel = "Alta 🔴";
+          mensagem = "Sinais de inflamação sistêmica! Vamos aliviar essa sobrecarga e restaurar seu equilíbrio.";
+        }
+
+        const unicosSistemas = [...new Set(userData.sintomas)].join(', ');
+        const listaSintomas = userData.sintomasTexto.join(', ');
+
+        // Gerar recomendação com base no IMC
+        let recomendacao = '';
+        if (userData.imc < 18.5) {
+          recomendacao = 'Seu IMC indica que você está abaixo do peso ideal. O Programa Desinflamação pode ajudar a alcançar um peso saudável com uma alimentação balanceada.';
+        } else if (userData.imc >= 18.5 && userData.imc < 25) {
+          recomendacao = 'Seu IMC está na faixa saudável! O Programa Desinflamação pode otimizar sua saúde e energia com um plano anti-inflamatório.';
+        } else if (userData.imc >= 25 && userData.imc < 30) {
+          recomendacao = 'Seu IMC indica sobrepeso. O Programa Desinflamação pode ajudar a reduzir medidas e melhorar sua saúde geral.';
+        } else {
+          recomendacao = 'Seu IMC indica obesidade. O Programa Desinflamação oferece um plano personalizado para perda de peso e redução de inflamação.';
+        }
+
+        // Gerar HTML do resultado
+        let resultadoHTML = `
+          <h3>Seu Resultado Personalizado</h3>
+          <div class="result-section">
+            <h4>Dados Pessoais</h4>
+            <p><strong>Idade:</strong> ${userData.idade} anos</p>
+            <p><strong>Peso:</strong> ${userData.peso} kg</p>
+            <p><strong>Altura:</strong> ${userData.altura} cm</p>
+            <p><strong>IMC:</strong> ${userData.imc}</p>
+            <p><strong>País:</strong> ${userData.pais}</p>
+          </div>
+          <div class="result-section">
+            <h4>Objetivos</h4>
+            <ul>${userData.objetivo ? userData.objetivo.map(item => `<li>${item}</li>`).join('') : '<li>Nenhum selecionado</li>'}</ul>
+          </div>
+          <div class="result-section">
+            <h4>Hábitos</h4>
+            <ul>${userData.habito ? userData.habito.map(item => `<li>${item}</li>`).join('') : '<li>Nenhum selecionado</li>'}</ul>
+          </div>
+          <div class="result-section">
+            <h4>Nível de Inflamação</h4>
+            <p><strong>Nível:</strong> ${nivel}</p>
+            <p>${mensagem}</p>
+          </div>
+          <div class="result-section">
+            <h4>Órgãos/Sistemas Afetados</h4>
+            <p>${unicosSistemas}</p>
+          </div>
+          <div class="result-section">
+            <h4>Sintomas Identificados</h4>
+            <p>${listaSintomas}</p>
+          </div>
+          <div class="result-section">
+            <h4>Recomendação</h4>
+            <p>${recomendacao}</p>
+            <p><strong>Me chama para entender como equilibrar tudo isso pela alimentação!</strong></p>
+          </div>
+        `;
+
+        document.getElementById('resultado').innerHTML = resultadoHTML;
+
+        // Gerar mensagem do WhatsApp
+        const mensagemWhatsApp = encodeURIComponent(
+          `Olá! Completei a avaliação do Programa Desinflamação.\n` +
+          `Idade: ${userData.idade} anos\n` +
+          `Peso: ${userData.peso} kg\n` +
+          `Altura: ${userData.altura} cm\n` +
+          `IMC: ${userData.imc}\n` +
+          `País: ${userData.pais}\n` +
+          `Nível de inflamação: ${nivel}\n` +
+          `Órgãos/sistemas afetados: ${unicosSistemas}\n` +
+          `Sintomas: ${listaSintomas}\n` +
+          `Objetivos: ${userData.objetivo ? userData.objetivo.join(', ') : 'Nenhum'}\n` +
+          `Hábitos: ${userData.habito ? userData.habito.join(', ') : 'Nenhum'}\n` +
+          `Quero ajuda para equilibrar meu corpo com alimentação!`
+        );
+        const whatsappLink = `https://wa.me/+16153304647?text=${mensagemWhatsApp}`;
+        
+        // Atualizar botões do WhatsApp
+        document.getElementById('whatsapp-cta').innerHTML = `
+          <a href="${whatsappLink}" target="_blank" class="whatsapp-btn">Fale com um Especialista no WhatsApp</a>
+        `;
+        document.getElementById('whatsapp-share').innerHTML = `
+          <a href="${whatsappLink}" target="_blank">💬 Clique aqui e me envie o seu resultado</a>
+        `;
+
+        document.getElementById('promo-section').style.display = "block";
+
+        window.scrollTo(0, 0);
+      }
+    }
+  </script>
+</body>
+</html>
