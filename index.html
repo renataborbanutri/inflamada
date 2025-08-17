@@ -72,14 +72,6 @@
       content: '✓'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: #b03574; font-weight: bold; font-size: 12px;
     }
 
-    .symptom-item {
-      background: #fafafa; border: 2px solid #e0e0e0; border-radius: 8px; padding: 12px; margin-bottom: 10px; cursor: pointer;
-      transition: all .3s ease; display: flex; align-items: center;
-    }
-    .symptom-item:hover { background: #fff0f4; border-color: #b03574; }
-    .symptom-item.selected { background: linear-gradient(135deg, #b03574, #d4579a); color: white; border-color: #b03574; }
-    .symptom-item input { margin-right: 12px; transform: scale(1.3); accent-color: #b03574; }
-
     button {
       background: linear-gradient(135deg, #b03574, #d4579a); color: white; border: none; padding: 16px 32px; font-size: 16px; font-weight: 600;
       border-radius: 50px; width: 100%; margin-top: 20px; cursor: pointer; transition: all .3s ease;
@@ -133,229 +125,99 @@
       h1 { font-size: 1.8em; }
     }
 
+    /* --- Alerta de Consequências --- */
+    .alert-card {
+      position: relative;
+      margin-top: 22px;
+      padding: 22px 20px 18px 20px;
+      border-radius: 18px;
+      background:
+        linear-gradient(#ffffff, #ffffff) padding-box,
+        linear-gradient(135deg, #ff6b9e, #ffb86b, #ff6b9e) border-box;
+      border: 2px solid transparent;
+      box-shadow: 0 12px 28px rgba(176,53,116,.18);
+      animation: alertGlow 2.2s ease-in-out infinite;
+    }
+    @keyframes alertGlow {
+      0%,100% { box-shadow: 0 10px 26px rgba(176,53,116,.18); }
+      50% { box-shadow: 0 14px 32px rgba(212,87,154,.28); }
+    }
+    .alert-chip {
+      position: absolute;
+      top: -12px; left: 16px;
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #b03574, #d4579a);
+      color: #fff; font-weight: 700; font-size: 12px; letter-spacing: .5px;
+      text-transform: uppercase;
+      box-shadow: 0 6px 18px rgba(176,53,116,.25);
+    }
+    .alert-heading {
+      margin: 6px 0 10px 0;
+      color: #8b2b59;
+      font-weight: 800;
+      font-size: 1.15rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .alert-heading .icon {
+      font-size: 1.2rem; line-height: 1;
+    }
+    .alert-list {
+      margin: 6px 0 0 0;
+      padding: 0; list-style: none;
+    }
+    .alert-list li {
+      position: relative;
+      padding-left: 30px;
+      margin: 10px 0;
+      line-height: 1.45;
+      color: #4a1b32;
+    }
+    .alert-list li::before {
+      content: "⚠️";
+      position: absolute; left: 0; top: 0;
+      transform: translateY(2px);
+    }
+    .alert-note {
+      margin-top: 14px;
+      font-size: .95rem;
+      font-weight: 600;
+      color: #6e2549;
+      padding: 10px 12px;
+      background: rgba(242,207,225,.35);
+      border-left: 4px solid #b03574;
+      border-radius: 12px;
+    }
 
-    /* --- DESTAQUE: Alerta de Consequências --- */
-.alert-card {
-  position: relative;
-  margin-top: 22px;
-  padding: 22px 20px 18px 20px;
-  border-radius: 18px;
-  background:
-    linear-gradient(#ffffff, #ffffff) padding-box,
-    linear-gradient(135deg, #ff6b9e, #ffb86b, #ff6b9e) border-box;
-  border: 2px solid transparent;
-  box-shadow: 0 12px 28px rgba(176,53,116,.18);
-  animation: alertGlow 2.2s ease-in-out infinite;
-}
-@keyframes alertGlow {
-  0%,100% { box-shadow: 0 10px 26px rgba(176,53,116,.18); }
-  50% { box-shadow: 0 14px 32px rgba(212,87,154,.28); }
-}
+    /* ===== CTA MOBILE-FIRST ===== */
+    .programa-cta { text-align: left; padding: clamp(18px, 5vw, 30px); border-radius: 16px; }
+    .programa-cta .cta-inner { max-width: 620px; margin: 0 auto; }
+    .programa-cta .cta-title { font-size: clamp(1.05rem, 4.5vw, 1.4rem); line-height: 1.35; margin: 0 0 14px 0; color: #fff; }
+    .programa-cta .cta-title strong { font-weight: 800; }
+    .programa-cta .cta-benefits { display: grid; gap: 10px; margin: 0 0 16px 0; padding: 0; list-style: none; }
+    .programa-cta .cta-benefits li {
+      display: grid; grid-template-columns: 22px 1fr; align-items: start; gap: 10px;
+      padding: 10px 12px; border-radius: 12px; background: rgba(255,255,255,0.12); backdrop-filter: saturate(140%);
+    }
+    .programa-cta .cta-benefits .icon { line-height: 1; font-size: 1rem; transform: translateY(2px); }
+    .programa-cta .cta-benefits strong { color: #fff; }
+    .programa-cta .cta-benefits span { color: #fff; font-size: clamp(0.95rem, 3.8vw, 1rem); line-height: 1.45; }
+    .programa-cta .cta-button { width: 100%; max-width: 520px; margin: 8px 0 0 0; font-size: clamp(0.95rem, 3.8vw, 1rem); padding: 14px 18px; }
 
-.alert-chip {
-  position: absolute;
-  top: -12px; left: 16px;
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #b03574, #d4579a);
-  color: #fff; font-weight: 700; font-size: 12px; letter-spacing: .5px;
-  text-transform: uppercase;
-  box-shadow: 0 6px 18px rgba(176,53,116,.25);
-}
-
-.alert-heading {
-  margin: 6px 0 10px 0;
-  color: #8b2b59;
-  font-weight: 800;
-  font-size: 1.15rem;
-  display: flex; align-items: center; gap: 8px;
-}
-.alert-heading .icon {
-  font-size: 1.2rem; line-height: 1;
-}
-
-.alert-list {
-  margin: 6px 0 0 0;
-  padding: 0; list-style: none;
-}
-.alert-list li {
-  position: relative;
-  padding-left: 30px;
-  margin: 10px 0;
-  line-height: 1.45;
-  color: #4a1b32;
-}
-.alert-list li::before {
-  content: "⚠️";
-  position: absolute; left: 0; top: 0;
-  transform: translateY(2px);
-}
-
-.alert-note {
-  margin-top: 14px;
-  font-size: .95rem;
-  font-weight: 600;
-  color: #6e2549;
-  padding: 10px 12px;
-  background: rgba(242,207,225,.35);
-  border-left: 4px solid #b03574;
-  border-radius: 12px;
-}
-
-
-/* ===== CTA MOBILE-FIRST ===== */
-.programa-cta {
-  text-align: left;
-  padding: clamp(18px, 5vw, 30px);
-  border-radius: 16px;
-}
-
-.programa-cta .cta-inner {
-  max-width: 620px;
-  margin: 0 auto;
-}
-
-.programa-cta .cta-title {
-  font-size: clamp(1.05rem, 4.5vw, 1.4rem);
-  line-height: 1.35;
-  margin: 0 0 14px 0;
-  color: #fff;
-}
-
-.programa-cta .cta-title strong {
-  font-weight: 800;
-}
-
-.programa-cta .cta-benefits {
-  display: grid;
-  gap: 10px;
-  margin: 0 0 16px 0;
-  padding: 0;
-  list-style: none;
-}
-
-.programa-cta .cta-benefits li {
-  display: grid;
-  grid-template-columns: 22px 1fr;
-  align-items: start;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: saturate(140%);
-}
-
-.programa-cta .cta-benefits .icon {
-  line-height: 1;
-  font-size: 1rem;
-  transform: translateY(2px);
-}
-
-.programa-cta .cta-benefits strong {
-  color: #fff;
-}
-
-.programa-cta .cta-benefits span {
-  color: #fff;
-  font-size: clamp(0.95rem, 3.8vw, 1rem);
-  line-height: 1.45;
-}
-
-/* Botão ocupando toda a largura no mobile, com largura máxima no desktop */
-.programa-cta .cta-button {
-  width: 100%;
-  max-width: 520px;
-  margin: 8px 0 0 0;
-  font-size: clamp(0.95rem, 3.8vw, 1rem);
-  padding: 14px 18px;
-}
-
-/* Ajuste sutil para telas médias/maiores */
-@media (min-width: 600px) {
-  .programa-cta .cta-benefits {
-    gap: 12px;
-  }
-}
-/* ===== SOLUTION — MOBILE-FIRST ===== */
-.solution {
-  padding: clamp(16px, 4.5vw, 22px);
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(255,246,250,.92), rgba(248,240,255,.92));
-  border: 1px solid rgba(242,207,225,.55);
-}
-
-.sol-title {
-  display: flex; align-items: center; gap: 8px;
-  margin: 0 0 10px 0;
-  font-size: clamp(1.05rem, 4.3vw, 1.25rem);
-  color: #8b2b59; font-weight: 800;
-}
-.sol-ico { font-size: 1.1em; line-height: 1; }
-
-.sol-lead {
-  margin: 0 0 12px 0;
-  font-size: clamp(0.95rem, 3.8vw, 1rem);
-  color: #6e2549;
-}
-
-.sol-steps {
-  counter-reset: step;
-  display: grid; gap: 8px;
-  margin: 0 0 14px 0; padding: 0; list-style: none;
-}
-.sol-steps li {
-  position: relative;
-  padding: 10px 12px 10px 44px;
-  border-radius: 12px;
-  background: rgba(255,255,255,.7);
-  border: 1px solid rgba(176,53,116,.18);
-  font-size: clamp(0.95rem, 3.8vw, 1rem);
-  line-height: 1.45;
-}
-.sol-steps li::before {
-  counter-increment: step;
-  content: counter(step);
-  position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
-  width: 26px; height: 26px; border-radius: 50%;
-  display: grid; place-items: center;
-  font-weight: 800; color: #fff;
-  background: linear-gradient(135deg, #b03574, #d4579a);
-  box-shadow: 0 6px 14px rgba(176,53,116,.22);
-}
-
-.sol-sub {
-  margin: 10px 0 8px 0;
-  font-weight: 800; color: #8b2b59;
-  font-size: clamp(0.98rem, 4vw, 1.1rem);
-}
-
-/* lista dinâmica de ajustes (preenchida via JS) */
-.sol-list {
-  margin: 0 0 12px 0; padding: 0; list-style: none;
-  display: grid; gap: 8px;
-}
-.sol-list li {
-  position: relative;
-  padding-left: 30px;
-  background: rgba(255,255,255,.7);
-  border: 1px solid rgba(176,53,116,.16);
-  border-radius: 10px;
-  padding: 10px 12px 10px 34px;
-  font-size: clamp(0.95rem, 3.8vw, 1rem);
-  line-height: 1.45;
-}
-.sol-list li::before {
-  content: "✅";
-  position: absolute; left: 10px; top: 9px; line-height: 1;
-}
-
-/* mantém seu estilo da .assurance, mas dá um respiro no mobile */
-.solution .assurance {
-  margin-top: 12px;
-  font-size: clamp(0.95rem, 3.8vw, 1rem);
-}
-
+    /* ===== SOLUTION — MOBILE-FIRST ===== */
+    .solution { padding: clamp(16px, 4.5vw, 22px); border-radius: 16px; background: linear-gradient(135deg, rgba(255,246,250,.92), rgba(248,240,255,.92)); border: 1px solid rgba(242,207,225,.55); }
+    .sol-title { display: flex; align-items: center; gap: 8px; margin: 0 0 10px 0; font-size: clamp(1.05rem, 4.3vw, 1.25rem); color: #8b2b59; font-weight: 800; }
+    .sol-ico { font-size: 1.1em; line-height: 1; }
+    .sol-lead { margin: 0 0 12px 0; font-size: clamp(0.95rem, 3.8vw, 1rem); color: #6e2549; }
+    .sol-steps { counter-reset: step; display: grid; gap: 8px; margin: 0 0 14px 0; padding: 0; list-style: none; }
+    .sol-steps li { position: relative; padding: 10px 12px 10px 44px; border-radius: 12px; background: rgba(255,255,255,.7); border: 1px solid rgba(176,53,116,.18); font-size: clamp(0.95rem, 3.8vw, 1rem); line-height: 1.45; }
+    .sol-steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; color: #fff; background: linear-gradient(135deg, #b03574, #d4579a); box-shadow: 0 6px 14px rgba(176,53,116,.22); }
+    .sol-sub { margin: 10px 0 8px 0; font-weight: 800; color: #8b2b59; font-size: clamp(0.98rem, 4vw, 1.1rem); }
+    .sol-list { margin: 0 0 12px 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+    .sol-list li { position: relative; padding-left: 30px; background: rgba(255,255,255,.7); border: 1px solid rgba(176,53,116,.16); border-radius: 10px; padding: 10px 12px 10px 34px; font-size: clamp(0.95rem, 3.8vw, 1rem); line-height: 1.45; }
+    .sol-list li::before { content: "✅"; position: absolute; left: 10px; top: 9px; line-height: 1; }
+    .solution .assurance { margin-top: 12px; font-size: clamp(0.95rem, 3.8vw, 1rem); }
   </style>
 </head>
 <body>
@@ -371,7 +233,6 @@
     <!-- SEÇÃO 1: DADOS PESSOAIS -->
     <div class="section active" id="section-1">
       <h1>Preciso de algumas informações básicas para personalizar sua avaliação</h1>
- <!--     <p class="subtitle">Preciso de algumas informações básicas para personalizar sua avaliação</p> -->
 
       <div class="form-group">
         <label for="idade">Qual sua idade?</label>
@@ -387,8 +248,6 @@
         <label for="altura">Qual sua altura? (cm)</label>
         <input type="number" id="altura" placeholder="Ex: 165">
       </div>
-
-
 
       <button onclick="nextSection(1)">Continuar</button>
     </div>
@@ -438,32 +297,117 @@
       </div>
     </div>
 
-    <!-- SEÇÃO 4: SINTOMAS -->
+    <!-- SEÇÃO 4: SINTOMAS (cards sem <small>) -->
     <div class="section" id="section-4">
       <h2>Autoavaliação da Inflamação</h2>
       <p class="subtitle">Marque os sintomas que você sente com frequência</p>
 
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Intestino" class="sintoma"><span>Barriga inchada ou gases</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Intestino" class="sintoma"><span>Constipação ou intestino solto</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Pele" class="sintoma"><span>Acne, rosácea ou pele irritada</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Hormonal" class="sintoma"><span>TPM intensa ou ciclo irregular</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Articulações" class="sintoma"><span>Dor nas articulações</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Cérebro" class="sintoma"><span>Cansaço excessivo ou névoa mental</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Fígado" class="sintoma"><span>Enjoo com alimentos gordurosos</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Sono" class="sintoma"><span>Dificuldade para dormir ou sono não reparador</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Metabolismo" class="sintoma"><span>Dificuldade em perder peso</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Inflamação hormonal" class="sintoma"><span>Gordura na região abdominal</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Rins" class="sintoma"><span>Acorda muito para fazer xixi</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Microbiota" class="sintoma"><span>Candidíase</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Urinário" class="sintoma"><span>Infecção urinária</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Neurológico" class="sintoma"><span>Dores de cabeça</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Muscular/Imune" class="sintoma"><span>Dor no corpo</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Imunológico" class="sintoma"><span>Alergias</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Hormonal" class="sintoma"><span>Ressecamento vaginal</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Hormonal" class="sintoma"><span>Baixa libido</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Digestivo" class="sintoma"><span>Língua esbranquiçada</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Absorção de vitaminas" class="sintoma"><span>Unha quebradiça</span></div>
-      <div class="symptom-item" onclick="toggleSymptom(this)"><input type="checkbox" value="Tireoide" class="sintoma"><span>Queda de cabelo</span></div>
+      <div class="checkbox-grid" id="symptom-grid">
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Barriga inchada ou gases">
+          <input type="checkbox" class="sintoma" value="Intestino"><div class="checkmark"></div>
+          <strong>Barriga inchada ou gases</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Constipação ou intestino solto">
+          <input type="checkbox" class="sintoma" value="Intestino"><div class="checkmark"></div>
+          <strong>Constipação ou intestino solto</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Acne, rosácea ou pele irritada">
+          <input type="checkbox" class="sintoma" value="Pele"><div class="checkmark"></div>
+          <strong>Acne, rosácea ou pele irritada</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="TPM intensa ou ciclo irregular">
+          <input type="checkbox" class="sintoma" value="Hormonal"><div class="checkmark"></div>
+          <strong>TPM intensa ou ciclo irregular</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Dor nas articulações">
+          <input type="checkbox" class="sintoma" value="Articulações"><div class="checkmark"></div>
+          <strong>Dor nas articulações</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Cansaço excessivo ou névoa mental">
+          <input type="checkbox" class="sintoma" value="Cérebro"><div class="checkmark"></div>
+          <strong>Cansaço excessivo ou névoa mental</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Enjoo com alimentos gordurosos">
+          <input type="checkbox" class="sintoma" value="Fígado"><div class="checkmark"></div>
+          <strong>Enjoo com alimentos gordurosos</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Dificuldade para dormir ou sono não reparador">
+          <input type="checkbox" class="sintoma" value="Sono"><div class="checkmark"></div>
+          <strong>Dificuldade para dormir ou sono não reparador</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Dificuldade em perder peso">
+          <input type="checkbox" class="sintoma" value="Metabolismo"><div class="checkmark"></div>
+          <strong>Dificuldade em perder peso</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Gordura na região abdominal">
+          <input type="checkbox" class="sintoma" value="Inflamação hormonal"><div class="checkmark"></div>
+          <strong>Gordura na região abdominal</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Acorda muito para fazer xixi">
+          <input type="checkbox" class="sintoma" value="Rins"><div class="checkmark"></div>
+          <strong>Acorda muito para fazer xixi</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Candidíase">
+          <input type="checkbox" class="sintoma" value="Microbiota"><div class="checkmark"></div>
+          <strong>Candidíase</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Infecção urinária">
+          <input type="checkbox" class="sintoma" value="Urinário"><div class="checkmark"></div>
+          <strong>Infecção urinária</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Dores de cabeça">
+          <input type="checkbox" class="sintoma" value="Neurológico"><div class="checkmark"></div>
+          <strong>Dores de cabeça</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Dor no corpo">
+          <input type="checkbox" class="sintoma" value="Muscular/Imune"><div class="checkmark"></div>
+          <strong>Dor no corpo</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Alergias">
+          <input type="checkbox" class="sintoma" value="Imunológico"><div class="checkmark"></div>
+          <strong>Alergias</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Ressecamento vaginal">
+          <input type="checkbox" class="sintoma" value="Hormonal"><div class="checkmark"></div>
+          <strong>Ressecamento vaginal</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Baixa libido">
+          <input type="checkbox" class="sintoma" value="Hormonal"><div class="checkmark"></div>
+          <strong>Baixa libido</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Língua esbranquiçada">
+          <input type="checkbox" class="sintoma" value="Digestivo"><div class="checkmark"></div>
+          <strong>Língua esbranquiçada</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Unha quebradiça">
+          <input type="checkbox" class="sintoma" value="Absorção de vitaminas"><div class="checkmark"></div>
+          <strong>Unha quebradiça</strong>
+        </div>
+
+        <div class="checkbox-item" onclick="toggleSymptomCard(this)" data-text="Queda de cabelo">
+          <input type="checkbox" class="sintoma" value="Tireoide"><div class="checkmark"></div>
+          <strong>Queda de cabelo</strong>
+        </div>
+      </div>
 
       <div class="navigation">
         <button class="nav-btn" onclick="prevSection(4)">Voltar</button>
@@ -475,10 +419,7 @@
     <div class="section" id="section-5">
       <div class="result" id="resultado"></div>
 
-      <!-- Vamos reaproveitar este bloco, mas o conteúdo será atualizado via JS para a copy do JAFE -->
       <div class="programa-cta" id="programa-cta"></div>
-
-      <!-- Antigos blocos de promo/whatsapp foram deixados de lado -->
     </div>
   </div>
 
@@ -546,7 +487,8 @@
       }
     }
 
-    function toggleSymptom(element) {
+    // Novo: handler para os sintomas em cards (sem <small>)
+    function toggleSymptomCard(element) {
       const input = element.querySelector('input');
       input.checked = !input.checked;
       element.classList.toggle('selected', input.checked);
@@ -554,47 +496,40 @@
       if (!userData.sintomas) userData.sintomas = [];
       if (!userData.sintomasTexto) userData.sintomasTexto = [];
 
-      const sintomaTexto = element.querySelector('span').innerText.trim();
+      const categoria = input.value; // ex.: "Intestino", "Hormonal"...
+      const descricao = element.getAttribute('data-text') ||
+                        (element.querySelector('strong') ? element.querySelector('strong').innerText.trim() : categoria);
+
       if (input.checked) {
-        if (!userData.sintomas.includes(input.value)) {
-          userData.sintomas.push(input.value);
-          userData.sintomasTexto.push(sintomaTexto);
-        }
+        if (!userData.sintomas.includes(categoria)) userData.sintomas.push(categoria);
+        if (!userData.sintomasTexto.includes(descricao)) userData.sintomasTexto.push(descricao);
       } else {
-        userData.sintomas = userData.sintomas.filter(item => item !== input.value);
-        userData.sintomasTexto = userData.sintomasTexto.filter(item => item !== sintomaTexto);
+        userData.sintomas = userData.sintomas.filter(v => v !== categoria);
+        userData.sintomasTexto = userData.sintomasTexto.filter(v => v !== descricao);
       }
     }
 
     /* ====== NOVO: ponte/alerta e plano de ação ====== */
     function mensagemPonte(nivel) {
-  // Mostra o alerta só quando o nível é "Alta".
-  // Se quiser que apareça também em "Moderada", troque a condição para:
-  // if (!nivel.includes("Alta") && !nivel.includes("Moderada")) return "";
-  //  if (!nivel.includes("Alta")) return "";
-
-    return `
-    <div class="alert-card" role="alert" aria-live="polite">
-      <span class="alert-chip">Alerta</span>
-      <h2 class="alert-heading"><span class="icon">🚩</span>Consequências de adiar o cuidado</h2>
-      <ul class="alert-list">
-        <li>Maior resistência à insulina e acúmulo de gordura visceral.</li>
-        <li>Hormônios descontrolados na pré-menopausa, menopausa ou pós menopausa.</li>
-        <li>Fadiga constante e névoa mental que afetam o foco.</li>
-        <li>Sono leve/irregular, com despertares noturnos.</li>
-        <li>Pele mais reativa e intestino instável.</li>
-        <li>Risco crescente de síndrome metabólica.</li>
-        <li>Dores articulares mais frequentes e recuperação lenta.</li>
-      </ul>
-      <div class="alert-note">Quanto antes você agir, mais rápido seu corpo responde.</div>
-    </div>
-  `;
-}
-
-
-    function bridgeLabel(nivel) {
-      return nivel.includes("Alta") ? "" : "";
+      return `
+        <div class="alert-card" role="alert" aria-live="polite">
+          <span class="alert-chip">Alerta</span>
+          <h2 class="alert-heading"><span class="icon">🚩</span>Consequências de adiar o cuidado</h2>
+          <ul class="alert-list">
+            <li>Maior resistência à insulina e acúmulo de gordura visceral.</li>
+            <li>Hormônios descontrolados na pré-menopausa, menopausa ou pós menopausa.</li>
+            <li>Fadiga constante e névoa mental que afetam o foco.</li>
+            <li>Sono leve/irregular, com despertares noturnos.</li>
+            <li>Pele mais reativa e intestino instável.</li>
+            <li>Risco crescente de síndrome metabólica.</li>
+            <li>Dores articulares mais frequentes e recuperação lenta.</li>
+          </ul>
+          <div class="alert-note">Quanto antes você agir, mais rápido seu corpo responde.</div>
+        </div>
+      `;
     }
+
+    function bridgeLabel(nivel) { return ""; }
 
     function planoAcao(sistemasSet) {
       const itens = [];
@@ -628,7 +563,6 @@
         const unicosSistemas = [...new Set(userData.sintomas)].join(', ');
         const listaSintomas = userData.sintomasTexto.join(', ');
 
-        // Recomendação por IMC (mantida)
         let recomendacao = '';
         if (userData.imc < 18.5) recomendacao = 'O JAFE pode ajudar a alcançar um peso saudável com uma alimentação balanceada.';
         else if (userData.imc < 25) recomendacao = 'O JAFE pode otimizar sua saúde e energia com um plano anti-inflamatório.';
@@ -645,7 +579,6 @@
             <p><strong>Idade:</strong> ${userData.idade} anos</p>
             <p><strong>Peso:</strong> ${userData.peso} kg</p>
             <p><strong>Altura:</strong> ${userData.altura} cm</p>
-
           </div>
 
           <div class="result-section">
@@ -684,62 +617,54 @@
             ${ponte}
           </div>
 
-         <div class="solution">
-          <h4 class="sol-title"><span class="sol-ico" aria-hidden="true">🧭</span>Plano de ação personalizado</h4>
-
-          <p class="sol-lead">Vamos agir em <strong>3 frentes</strong> para desinflamar e estabilizar hormônios:</p>
-
-          <ol class="sol-steps" role="list">
-            <li><strong>Jejum estruturado</strong> </li>
-            <li><strong>Reset intestinal</strong></li>
-            <li><strong>Prato inteligente</strong> — <em>quantidade certa</em> com a <strong>TATA</strong> (proteína âncora, combinações de macros e janela alimentar).</li>
-          </ol>
-
-          <h5 class="sol-sub">Ajustes finos para o seu caso</h5>
-          <ul id="plano-ul" class="sol-list"></ul>
-
-          <p class="assurance">Dentro do JAFE eu te guio na prática — do jejum certo ao prato certo, com segurança, constância e ajustes semanais até seu corpo responder.</p>
-        </div>
-
+          <div class="solution">
+            <h4 class="sol-title"><span class="sol-ico" aria-hidden="true">🧭</span>Plano de ação personalizado</h4>
+            <p class="sol-lead">Vamos agir em <strong>3 frentes</strong> para desinflamar e estabilizar hormônios:</p>
+            <ol class="sol-steps" role="list">
+              <li><strong>Jejum estruturado</strong></li>
+              <li><strong>Reset intestinal</strong></li>
+              <li><strong>Prato inteligente</strong> — <em>quantidade certa</em> com a <strong>TATA</strong> (proteína âncora, combinações de macros e janela alimentar).</li>
+            </ol>
+            <h5 class="sol-sub">Ajustes finos para o seu caso</h5>
+            <ul id="plano-ul" class="sol-list"></ul>
+            <p class="assurance">Dentro do JAFE eu te guio na prática — do jejum certo ao prato certo, com segurança, constância e ajustes semanais até seu corpo responder.</p>
+          </div>
         `;
         const resultadoEl = document.getElementById('resultado');
         resultadoEl.innerHTML = htmlResultado;
 
-        // Preencher plano de ação conforme sistemas marcados
         const ul = document.getElementById('plano-ul');
         if (ul) ul.innerHTML = planoAcao(new Set(userData.sintomas));
 
-        // Atualiza CTA final com a mesma copy do teste anterior
         const ctaEl = document.getElementById('programa-cta');
         ctaEl.innerHTML = `
-  <div class="cta-inner">
-    <h3 class="cta-title">
-      Vou te conduzir com <strong>jejum + refeições corretas</strong> para desinflamar e
-      recuperar o <strong>controle hormonal</strong>.
-    </h3>
+          <div class="cta-inner">
+            <h3 class="cta-title">
+              Vou te conduzir com <strong>jejum + refeições corretas</strong> para desinflamar e
+              recuperar o <strong>controle hormonal</strong>.
+            </h3>
 
-    <ul class="cta-benefits" role="list">
-      <li>
-        <span class="icon" aria-hidden="true">✅</span>
-        <span><strong>Jejum = anti-inflamatório natural</strong> — aplicado com segurança e estratégia.</span>
-      </li>
-      <li>
-        <span class="icon" aria-hidden="true">✅</span>
-        <span><strong>Quantidade certa para você</strong>: com a TATA, minha calculadora inteligente, você sabe exatamente quanto comer.</span>
-      </li>
-    </ul>
+            <ul class="cta-benefits" role="list">
+              <li>
+                <span class="icon" aria-hidden="true">✅</span>
+                <span><strong>Jejum = anti-inflamatório natural</strong> — aplicado com segurança e estratégia.</span>
+              </li>
+              <li>
+                <span class="icon" aria-hidden="true">✅</span>
+                <span><strong>Quantidade certa para você</strong>: com a TATA, minha calculadora inteligente, você sabe exatamente quanto comer.</span>
+              </li>
+            </ul>
 
-    <a
-      href="https://renataborbanutri.github.io/jejum/?utm_source=avaliacao2sem&utm_medium=cta_main&utm_campaign=jafe"
-      target="_blank"
-      class="button cta-button"
-      aria-label="Quero meu plano para desinflamar com o JAFE"
-    >
-      👉 Quero desinflamar agora
-    </a>
-  </div>
-`;
-
+            <a
+              href="https://renataborbanutri.github.io/jejum/?utm_source=avaliacao2sem&utm_medium=cta_main&utm_campaign=jafe"
+              target="_blank"
+              class="button cta-button"
+              aria-label="Quero meu plano para desinflamar com o JAFE"
+            >
+              👉 Quero desinflamar agora
+            </a>
+          </div>
+        `;
 
         window.scrollTo(0, 0);
       }
